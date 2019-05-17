@@ -11,22 +11,6 @@ These files provide basic Checks and Metrics for a Windows system.
 
 ## Files
 
-### Ruby
-
- * bin/check-windows-cpu-load.rb
- * bin/check-windows-disk.rb
- * bin/check-windows-process.rb
- * bin/check-windows-processor-queue-length.rb
- * bin/check-windows-ram.rb
- * bin/check-windows-service.rb
- * bin/metric-windows-cpu-load.rb
- * bin/metric-windows-disk-usage.rb
- * bin/metric-windows-network.rb
- * bin/metric-windows-processor-queue-length.rb
- * bin/metric-windows-ram-usage.rb
- * bin/metric-windows-uptime.rb
- * bin/powershell_helper.rb
-
 ### Powershell
 
  * bin/powershell/check-windows-cpu-load.ps1
@@ -47,59 +31,74 @@ These files provide basic Checks and Metrics for a Windows system.
  * bin/powershell/check-windows-event-log.ps1
  * bin/powershell/check-windows-log.ps1
 
+### Ruby -NOT TESTED-
+
+~~ * bin/check-windows-cpu-load.rb
+~~ * bin/check-windows-disk.rb
+~~ * bin/check-windows-process.rb
+~~ * bin/check-windows-processor-queue-length.rb
+~~ * bin/check-windows-ram.rb
+~~ * bin/check-windows-service.rb
+~~ * bin/metric-windows-cpu-load.rb
+~~ * bin/metric-windows-disk-usage.rb
+~~ * bin/metric-windows-network.rb
+~~ * bin/metric-windows-processor-queue-length.rb
+~~ * bin/metric-windows-ram-usage.rb
+~~ * bin/metric-windows-uptime.rb
+~~ * bin/powershell_helper.rb
+
 
 ## Usage
 
 ##### Example 1:
 
-Execute Powershell functions using the helper (No copy needed), see example below:
-
-```json
-  {
-    "checks": {
-      "cpu_percent": {
-        "command": "c:\\opt\\sensu\\embedded\\bin\\ruby C:\\opt\\sensu\\embedded\\bin\\powershell_helper.rb check-windows-ram.ps1 90 95",
-        "interval": 30,
-        "type": "check",
-        "handler": "win_metrics",
-        "subscribers": ["win_metrics"]
-      }
-    }
-  }
-```
-
-##### Example 2:
-
-- Copy either the Ruby or Powershell files on a Sensu Client, typically under C:\etc\sensu\plugins.
-
-- You should also include the full escaped path to the ruby interpreter in the check's command configuration, see example below:
-
-```json
-  {
-    "checks": {
-      "cpu_percent": {
-        "command": "c:\\opt\\sensu\\embedded\\bin\\ruby C:\\opt\\sensu\\etc\\plugins\\metric-windows-cpu-load.rb",
-        "interval": 30,
-        "type": "metric",
-        "handler": "win_metrics",
-        "subscribers": ["win_metrics"]
-      }
-    }
-  }
-```
-
-You should also include the full escaped path to the ruby interpreter in the check's command configuration, see example below:
+Check Definition
 
 ```json
 {
-  "checks": {
-    "cpu_percent": {
-      "command": "c:\\opt\\sensu\\embedded\\bin\\ruby C:\\opt\\sensu\\etc\\plugins\\metric-windows-cpu-load.rb",
-      "interval": 30,
-      "type": "metric",
-      "handler": "win_metrics",
-      "subscribers": ["win_metrics"]
-    }
+  "type": "CheckConfig",
+  "api_version": "core/v2",
+  "metadata": {
+    "namespace": "default",
+    "name": "win-cpu-check"
+  },
+  "spec": {
+    "command": "powershell.exe -ExecutionPolicy ByPass -C check-windows-cpu-load.ps1 90 95",
+    "subscriptions": [
+      "windows"
+    ],
+    "handlers": [
+      "slack",
+      "email"
+    ],
+    "runtime_assets": [
+      "sensu-plugins-windows"
+    ],
+    "interval": 60,
+    "publish": true
+  }
+}
+```
+
+Asset Definition
+
+```json
+{
+  "type": "Asset",
+  "api_version": "core/v2",
+  "metadata": {
+    "name": "sensu-plugins-windows-checks",
+    "namespace": "default",
+    "labels": {},
+    "annotations": {}
+  },
+  "spec": {
+    "url": "[RESOURCE_URL]",
+    "sha512": "[EXAMPLE SHA512sum 7478720b02451aedc2]",
+    "filters": [
+      "entity.system.os == 'windows'",
+      "entity.system.arch == 'amd64'"
+    ]
   }
 }
 ```
@@ -110,8 +109,6 @@ You should also include the full escaped path to the ruby interpreter in the che
 ## Troubleshooting
 * Failures to pull counter data with messages like below, might be due to corrupt performance counters. See [Here](https://support.microsoft.com/en-us/help/2554336/how-to-manually-rebuild-performance-counters-for-windows-server-2008-6) for more information.  Short answer on fix is `lodctr /R` in an Admin elevated command prompt
 
-`Check failed to run: undefined method length' for nil:NilClass, "c:/opt/sensu/plugins/check-windows-ram.rb:45:inacquire_ram_usage'", "c:/opt/sensu/plugins/check-windows-ram.rb:54:in run'", "c:/opt/sensu/embedded/lib/ruby/gems/2.0.0/gems/sensu-plugin-1.`
-
 ## Installation
 
-[Installation and Setup](http://sensu-plugins.io/docs/installation_instructions.html)
+TO DO
