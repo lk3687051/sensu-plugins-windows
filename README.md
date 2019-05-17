@@ -33,19 +33,19 @@ These files provide basic Checks and Metrics for a Windows system.
 
 ### Ruby -NOT TESTED-
 
- * ~~ bin/check-windows-cpu-load.rb~~
- * ~~ bin/check-windows-disk.rb ~~
- * ~~ bin/check-windows-process.rb ~~
- * ~~ bin/check-windows-processor-queue-length.rb ~~
- * ~~ bin/check-windows-ram.rb ~~
- * ~~ bin/check-windows-service.rb ~~
- * ~~ bin/metric-windows-cpu-load.rb ~~
- * ~~ bin/metric-windows-disk-usage.rb ~~
- * ~~ bin/metric-windows-network.rb ~~
- * ~~ bin/metric-windows-processor-queue-length.rb ~~
- * ~~ bin/metric-windows-ram-usage.rb ~~
- * ~~ bin/metric-windows-uptime.rb ~~
- * ~~ bin/powershell_helper.rb ~~
+ * ~~bin/check-windows-cpu-load.rb~~
+ * ~~bin/check-windows-disk.rb~~
+ * ~~bin/check-windows-process.rb~~
+ * ~~bin/check-windows-processor-queue-length.rb~~
+ * ~~bin/check-windows-ram.rb~~
+ * ~~bin/check-windows-service.rb~~
+ * ~~bin/metric-windows-cpu-load.rb~~
+ * ~~bin/metric-windows-disk-usage.rb~~
+ * ~~bin/metric-windows-network.rb~~
+ * ~~bin/metric-windows-processor-queue-length.rb~~
+ * ~~bin/metric-windows-ram-usage.rb~~
+ * ~~bin/metric-windows-uptime.rb~~
+ * ~~bin/powershell_helper.rb~~
 
 
 ## Usage
