@@ -33,8 +33,8 @@ These files provide basic Checks and Metrics for a Windows system.
 
 ### Ruby -NOT TESTED-
 
-~~ * bin/check-windows-cpu-load.rb
-~~ * bin/check-windows-disk.rb
+~~* bin/check-windows-cpu-load.rb
+~~* bin/check-windows-disk.rb
 ~~ * bin/check-windows-process.rb
 ~~ * bin/check-windows-processor-queue-length.rb
 ~~ * bin/check-windows-ram.rb
