@@ -7,6 +7,8 @@
 
 ## Functionality
 
+# Updated for Sensu GO Bonsai
+
 These files provide basic Checks and Metrics for a Windows system.
 
 ## Files
