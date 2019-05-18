@@ -89,14 +89,14 @@ Asset Definition
   "type": "Asset",
   "api_version": "core/v2",
   "metadata": {
-    "name": "sensu-plugins-windows-checks",
+    "name": "sensu-plugins-windows",
     "namespace": "default",
     "labels": {},
     "annotations": {}
   },
   "spec": {
-    "url": "[RESOURCE_URL]",
-    "sha512": "[EXAMPLE SHA512sum 7478720b02451aedc2]",
+    "url": "http://example/assets/asset.tar.gz",
+    "sha512": "7478720b02451aedc2",
     "filters": [
       "entity.system.os == 'windows'",
       "entity.system.arch == 'amd64'"
